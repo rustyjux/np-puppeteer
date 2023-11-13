@@ -1,4 +1,4 @@
-name: Capture Webpage Screenshot
+name: Capture Webpage Screenshot - Dev
 
 on:
   push:
