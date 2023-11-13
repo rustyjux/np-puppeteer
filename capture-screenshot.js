@@ -42,8 +42,8 @@ async function captureScreenshot(url, darkMode) {
                     .setTimeout(timeout)
                     .click({
                       offset: {
-                        x: 31,
-                        y: 28,
+                        x: 35,
+                        y: 32,
                       },
                     });
                 console.log('Dark mode: selecting dark');
@@ -58,8 +58,8 @@ async function captureScreenshot(url, darkMode) {
                     .setTimeout(timeout)
                     .click({
                       offset: {
-                        x: 13,
-                        y: 15,
+                        x: 11,
+                        y: 8,
                       },
                     });
                 console.log('Dark mode: closing menu');
