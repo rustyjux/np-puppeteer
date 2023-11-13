@@ -15,7 +15,7 @@ async function captureScreenshot(url, darkMode) {
         console.log('Waiting for page to load')
         await waitTillHTMLRendered(page)
         console.log(`Capturing screenshot - dark mode? ${darkMode}`)
-        if (darkMode === 'true') {
+        if (darkMode === true) {
             {
                 const targetPage = page;
                 await puppeteer.Locator.race([
