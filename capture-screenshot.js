@@ -30,6 +30,7 @@ async function captureScreenshot(url, darkMode) {
                         y: 14,
                       },
                     });
+                console.log('Dark mode: opening settings');
             }
             {
                 const targetPage = page;
@@ -45,6 +46,7 @@ async function captureScreenshot(url, darkMode) {
                         y: 28,
                       },
                     });
+                console.log('Dark mode: selecting dark');
             }
             {
                 const targetPage = page;
@@ -60,12 +62,14 @@ async function captureScreenshot(url, darkMode) {
                         y: 15,
                       },
                     });
+                console.log('Dark mode: closing menu');
             }
+            console.log('Dark mode: waiting');
             await delay(2000);
         }
         console.log('Capturing screenshot')
         const map = await page.$('body > app-root > div > app-ski-area > div > div > div');
-        await new Promise(resolve => setTimeout(resolve, 5000)); // Wait for 5 seconds
+        // await new Promise(resolve => setTimeout(resolve, 5000)); // Wait for 5 seconds
         console.log('Returning screenshot')
         await map.screenshot({ path: 'screenshot.png' });
     } catch (error) {
