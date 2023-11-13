@@ -65,7 +65,7 @@ async function captureScreenshot(url, darkMode) {
         }
         console.log('Capturing screenshot')
         const map = await page.$('body > app-root > div > app-ski-area > div > div > div');
-        // await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 5 seconds
+        await new Promise(resolve => setTimeout(resolve, 5000)); // Wait for 5 seconds
         console.log('Returning screenshot')
         await map.screenshot({ path: 'screenshot.png' });
     } catch (error) {
