@@ -2,17 +2,29 @@ const puppeteer = require('puppeteer');
 
 async function captureScreenshot(url, darkMode) {
     const browser = await puppeteer.launch({
-      headless: "new"
+        headless: "new"
     });
     try {
         // Capture the screenshot
         const page = await browser.newPage();
-        page.setDefaultNavigationTimeout(0); // TODO - set high but not unlimited
-        const timeout = 0; // TODO - set high but not unlimited
-        console.log('Loading page')
-        await page.goto(url, {timeout: 0}); // TODO - set high but not unlimited
-        await page.setViewport({width: 2160, height: 1920});
-        console.log('Waiting for page to load')
+        const timeout = 10000; 
+        page.setDefaultTimeout(timeout);
+        {
+            console.log('New page')
+            const targetPage = page;
+            await targetPage.setViewport({width: 2160, height: 1920});
+        }
+        {
+            console.log('Loading')
+            const targetPage = page;
+            const promises = [];
+            const startWaitingForEvents = () => {
+                promises.push(targetPage.waitForNavigation());
+            }
+            startWaitingForEvents();
+            await targetPage.goto('https://nordic-pulse.com/ski-areas/CA/BC/Black-Jack-Ski-Club');
+            await Promise.all(promises);
+        }
         await waitTillHTMLRendered(page)
         console.log(`Capturing screenshot - dark mode? ${darkMode}`)
         if (darkMode === true) {
@@ -30,7 +42,6 @@ async function captureScreenshot(url, darkMode) {
                         y: 14,
                       },
                     });
-                console.log('Dark mode: opening settings');
             }
             {
                 const targetPage = page;
@@ -46,7 +57,6 @@ async function captureScreenshot(url, darkMode) {
                         y: 28,
                       },
                     });
-                console.log('Dark mode: selecting dark');
             }
             {
                 const targetPage = page;
@@ -62,9 +72,7 @@ async function captureScreenshot(url, darkMode) {
                         y: 15,
                       },
                     });
-                console.log('Dark mode: closing menu');
             }
-            console.log('Dark mode: waiting');
             await delay(2000);
         }
         console.log('Capturing screenshot')
