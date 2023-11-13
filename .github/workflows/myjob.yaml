@@ -1,0 +1,21 @@
+name: My Workflow
+
+on:
+  push:
+  schedule:
+    - cron: "*/5 * * * *"
+    
+jobs:
+  myJob:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check Time and Event
+      run: |
+        if [ "${{ github.event_name }}" == "schedule" ]; then
+          echo "This workflow was triggered by a schedule."
+          current_time=$(date +"%T")
+          echo "Current time: $current_time"
+        else
+          echo "This workflow was triggered by a push event."
+        fi
