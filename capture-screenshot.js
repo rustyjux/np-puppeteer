@@ -1,35 +1,8 @@
 const puppeteer = require('puppeteer');
 
-async function captureScreenshot() {
-    // Capture the screenshot
-    const browser = await puppeteer.launch({headless:"new"});
-    const page = await browser.newPage();
-    await page.goto('https://nordic-pulse.com/ski-areas/CA/BC/Black-Jack-Ski-Club');
-    await page.setViewport({width: 1080, height: 1024});
-    await page.waitForSelector('div.trails-toggle-wrap', { visible: true });
-    await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 5 seconds
-    await page.screenshot({ path: 'screenshot.png' });
-    await browser.close();
-}
-
-captureScreenshot();
-
-const puppeteer = require('puppeteer');
-require("dotenv").config();
-
 async function captureScreenshot(url, darkMode) {
     const browser = await puppeteer.launch({
-      args: [
-        "--disable-setuid-sandbox",
-        "--no-sandbox",
-        "--single-process",
-        "--no-zygote",
-      ],
-      executablePath: 
-        process.env.NODE_ENV === "production"
-        ? process.env.PUPPETEER_EXECUTABLE_PATH
-        : puppeteer.executablePath(),
-      headless: true
+      headless: "new"
     });
     try {
         // Capture the screenshot
