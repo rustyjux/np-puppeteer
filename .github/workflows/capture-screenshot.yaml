@@ -35,5 +35,5 @@ jobs:
 
       - name: Upload Screenshot to S3
         run: |
-            aws s3 cp screenshot.png s3://np-screenshot/screenshot-dev.png --region us-west-2 --metadata public=yes
-            aws s3api put-object-tagging --bucket np-screenshot --key screenshot.png --tagging 'TagSet=[{Key=public,Value=yes}]' --region us-west-2
+            aws s3 cp screenshot.png s3://np-screenshot/screenshot-dev.png --region us-west-2
+            aws s3api put-object-tagging --bucket np-screenshot --key screenshot-dev.png --tagging 'TagSet=[{Key=public,Value=yes}]' --region us-west-2
