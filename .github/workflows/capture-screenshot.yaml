@@ -2,6 +2,8 @@ name: Capture Webpage Screenshot
 
 on:
   push:
+  schedule:
+    - cron: "*/5 14-23,0-5 * * *"
 
 jobs:
   capture-screenshot:
