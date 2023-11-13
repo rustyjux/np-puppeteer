@@ -2,8 +2,6 @@ name: Capture Webpage Screenshot
 
 on:
   push:
-    branches:
-      - main
 
 jobs:
   capture-screenshot:
