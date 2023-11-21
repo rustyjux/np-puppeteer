@@ -22,7 +22,7 @@ async function captureScreenshot(url, darkMode) {
                 promises.push(targetPage.waitForNavigation());
             }
             startWaitingForEvents();
-            await targetPage.goto('https://nordic-pulse.com/ski-areas/CA/BC/Black-Jack-Ski-Club');
+            await targetPage.goto(url);
             await Promise.all(promises);
         }
         await waitTillHTMLRendered(page)
