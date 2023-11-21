@@ -122,4 +122,4 @@ const waitTillHTMLRendered = async (page, timeout = 120000) => { // TODO - figur
 const delay = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
 
 
-captureScreenshot("https://nordic-pulse.com/ski-areas/CA/BC/Black-Jack-Ski-Club", true);
+captureScreenshot("https://nordic-pulse.com/ski-areas/CA/BC/Black-Jack-Ski-Club?dark=true", false);
