@@ -76,7 +76,8 @@ async function captureScreenshot(url, darkMode) {
             await delay(2000);
         }
         console.log('Capturing screenshot')
-        const map = await page.$('body > app-root > div > app-ski-area > div > div > div');
+        // const map = await page.$('body > app-root > div > app-ski-area > div > div > div');
+        const map = page
         // await new Promise(resolve => setTimeout(resolve, 5000)); // Wait for 5 seconds
         console.log('Returning screenshot')
         await map.screenshot({ path: 'screenshot.png' });
@@ -122,4 +123,4 @@ const waitTillHTMLRendered = async (page, timeout = 120000) => { // TODO - figur
 const delay = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
 
 
-captureScreenshot("https://nordic-pulse.com/ski-areas/CA/BC/Black-Jack-Ski-Club?dark=true", false);
+captureScreenshot("https://nordic-pulse.com/ski-areas/CA/BC/Black-Jack-Ski-Club/map?print=true&header=false&dark=true", false);
