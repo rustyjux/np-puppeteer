@@ -12,7 +12,7 @@ async function captureScreenshot(url, darkMode) {
         {
             console.log('New page')
             const targetPage = page;
-            await targetPage.setViewport({width: 2160, height: 1920});
+            await targetPage.setViewport({width: 1080, height: 1920});
         }
         {
             console.log('Loading')
@@ -77,7 +77,7 @@ async function captureScreenshot(url, darkMode) {
         }
         console.log('Capturing screenshot')
         // const map = await page.$('body > app-root > div > app-ski-area > div > div > div');
-        const map = targetPage
+        const map = page
         // await new Promise(resolve => setTimeout(resolve, 5000)); // Wait for 5 seconds
         console.log('Returning screenshot')
         await map.screenshot({ path: 'screenshot.png' });
