@@ -54,5 +54,5 @@ jobs:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
           retain_days: 1
-          keep_minimum_runs: 10
+          keep_minimum_runs: 800
           delete_workflow_pattern: capture-screenshot.yaml
