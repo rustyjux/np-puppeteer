@@ -37,6 +37,22 @@ jobs:
         run: aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }} && aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}     
 
       - name: Upload Screenshot to S3
+
         run: |
             aws s3 cp screenshot.png s3://np-screenshot/screenshot.png --region us-west-2
             aws s3api put-object-tagging --bucket np-screenshot --key screenshot.png --tagging 'TagSet=[{Key=public,Value=yes}]' --region us-west-2
+            
+  cleanup-runs:
+    name: Delete workflow runs
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write    
+    steps:
+      - name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 1
+          keep_minimum_runs: 10
+          delete_workflow_pattern: capture-screenshot.yaml
