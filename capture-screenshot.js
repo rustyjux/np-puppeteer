@@ -8,7 +8,7 @@ async function captureScreenshot(url, darkMode) {
     try {
         // Capture the screenshot
         const page = await browser.newPage();
-        const timeout = 20000; 
+        const timeout = 30000; 
         page.setDefaultTimeout(timeout);
         {
             console.log('New page')
