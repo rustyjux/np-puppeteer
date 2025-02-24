@@ -40,7 +40,7 @@ async function captureScreenshot(url) {
     }
 }
 
-const waitTillHTMLRendered = async (page, timeout = 120000) => { // TODO - figure out acceptable timeout
+const waitTillHTMLRendered = async (page, timeout = 120000) => {
     const checkDurationMsecs = 1000;
     const maxChecks = timeout / checkDurationMsecs;
     let lastHTMLSize = 0;
@@ -67,9 +67,9 @@ const waitTillHTMLRendered = async (page, timeout = 120000) => { // TODO - figur
       }
   
       lastHTMLSize = currentHTMLSize;
-      await page.waitForTimeout(checkDurationMsecs);
+      await delay(checkDurationMsecs);
     }  
-  };
+};
 
 const delay = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
 
