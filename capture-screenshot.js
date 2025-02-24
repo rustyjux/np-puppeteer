@@ -2,7 +2,8 @@ const puppeteer = require('puppeteer');
 
 async function captureScreenshot(url) {
     const browser = await puppeteer.launch({
-        headless: "new"
+        headless: "new",
+        args: ['--no-sandbox']
     });
     try {
         // Capture the screenshot
